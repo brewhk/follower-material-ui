@@ -1,12 +1,8 @@
 Package.describe({
   name: 'brewhk:follower-material-ui',
-  version: '0.0.1',
-  // Brief, one-line summary of the package.
-  summary: '',
-  // URL to the Git repository containing the source code for this package.
-  git: '',
-  // By default, Meteor will default to using README.md for documentation.
-  // To avoid submitting documentation, set this field to null.
+  version: '0.0.2',
+  summary: 'Material UI components for the brewhk:follower package',
+  git: 'https://github.com/brewhk/follower-material-ui.git',
   documentation: 'README.md'
 });
 
