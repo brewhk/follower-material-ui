@@ -27,8 +27,7 @@ class FollowButton extends Component {
     const getComponentToRender = () => {
       if(Meteor.userId()) {
         if (this.props.ready) {
-          const isFollowing = Follower.checkIfFollowing(this.props.userId);
-          return isFollowing ? (
+          return this.props.isFollowing ? (
             <RaisedButton label="Unfollow" onClick={this.unfollow} />
           ) : (
             <RaisedButton label="Follow" onClick={this.follow} />
@@ -45,11 +44,13 @@ class FollowButton extends Component {
 FollowButton.propTypes = {
   ready: PropTypes.bool.isRequired,
   userId: PropTypes.string.isRequired,
+  isFollowing: PropTypes.bool.isRequired,
 };
 
 export default createContainer((params) => {
   let userSubscriptionHandle = Meteor.subscribe('brewhk:follower/following', params.userId);
   return {
-    ready: userSubscriptionHandle.ready()
+    ready: userSubscriptionHandle.ready(),
+    isFollowing: Follower.checkIfFollowing(params.userId),
   };
 }, FollowButton);

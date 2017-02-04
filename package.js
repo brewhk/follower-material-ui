@@ -1,6 +1,6 @@
 Package.describe({
   name: 'brewhk:follower-material-ui',
-  version: '0.0.4',
+  version: '0.0.5',
   summary: 'Material UI components for the brewhk:follower package',
   git: 'https://github.com/brewhk/follower-material-ui.git',
   documentation: 'README.md'

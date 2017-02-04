@@ -19,7 +19,7 @@ class FollowerListing extends Component {
                 this.props.ready ? (
                   <div>
                     {
-                      Follower.getFollowers(this.props.id).map((follower) => (
+                      this.props.followers.map((follower) => (
                         <UsersListingItem key={follower._id} user={follower} />
                       ))
                     }
@@ -31,13 +31,15 @@ class FollowerListing extends Component {
     }
 }
 FollowerListing.propTypes = {
-    ready: PropTypes.bool.isRequired
+    ready: PropTypes.bool.isRequired,
+    followers: PropTypes.array.isRequired,
 };
 
 export default createContainer((params) => {
     let userSubscriptionHandle = Meteor.subscribe('brewhk:follower/followers', params.id);
     return {
-        ready: userSubscriptionHandle.ready()
+        ready: userSubscriptionHandle.ready(),
+        followers: Follower.getFollowers(params.id),
     };
 }, FollowerListing);
 

@@ -6,6 +6,7 @@ import Paper from 'material-ui/Paper';
 import CircularProgress from 'material-ui/CircularProgress';
 import Avatar from 'material-ui/Avatar';
 import FlatButton from 'material-ui/FlatButton';
+import { Link } from 'react-router';
 
 class UsersListingItem extends Component {
     constructor(props) {
@@ -27,19 +28,16 @@ class UsersListingItem extends Component {
     render() {
         return (
             <Paper>
-                { this.props.ready ? (
-                  <div>
-                    <Avatar src={this.props.user.settings.profile && this.props.user.settings.profile.avatar ? this.props.user.settings.profile.avatar : Meteor.settings.public.profile.defaultAvatar} />
-                    <p>{this.props.user.settings.account.firstName} {this.props.user.settings.account.lastName}</p>
-                    <FlatButton
-                      label="Profile"
-                      containerElement={<Link to={`/user/${this.props.user._id}`} />}
-                    />
-                    <FlatButton label="Follow" onClick={this.followUser} />
-                    <FlatButton label="Unfollow" onClick={this.unfollowUser} />
-
-                  </div>
-                ) : <CircularProgress /> }
+              <div>
+                <Avatar src={this.props.user.settings.profile && this.props.user.settings.profile.avatar ? this.props.user.settings.profile.avatar : Meteor.settings.public.profile.defaultAvatar} />
+                <p>{this.props.user.settings.account.firstName} {this.props.user.settings.account.lastName}</p>
+                <FlatButton
+                  label="Profile"
+                  containerElement={<Link to={`/user/${this.props.user._id}`} />}
+                />
+                <FlatButton label="Follow" onClick={this.followUser} />
+                <FlatButton label="Unfollow" onClick={this.unfollowUser} />
+              </div>
             </Paper>
         );
     }
